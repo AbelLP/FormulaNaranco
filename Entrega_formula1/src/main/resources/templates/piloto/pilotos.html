@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="Aplicación web de Fórmula 1"/>
+    <meta name="author" content="PSPR - IES Monte Naranco"/>
+    <title>Formula Naranco :: Pilotos</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav th:replace="~{index :: menu}">
+</nav>
+<!-- Page Content-->
+<div class="container px-4 px-lg-5">
+    <!-- Content Row-->
+    <div id="listado-pilotos" class="row gx-4 gx-lg-5">
+        <div th:each="piloto:${pilotos}" class="col-md-3 mb-5">
+            <div th:fragment="tarjeta-piloto" class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title" th:text="${piloto.nombre}"></h2>
+                    <h6 class="card-subtitle mb-2 text-secondary" th:text="${piloto.equipo}"></h6>
+                    <div class="text-center">
+                        <img th:class="piloto-portada" th:src="${piloto.foto}">
+                    </div>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" th:href="@{/piloto/{id}(id=${piloto.pilotoId})}">Más info</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer-->
+<footer th:replace="~{index :: footer}">
+</footer>
+<div th:replace="~{index :: librerias-js}"></div>
+
+</body>
+</html>

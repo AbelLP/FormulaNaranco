@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="Aplicación web de Fórmula 1"/>
+    <meta name="author" content="PSPR - IES Monte Naranco"/>
+    <title>Formula Naranco :: Piloto</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav th:replace="~{index :: menu}">
+</nav>
+<!-- Page Content-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5">
+            <form th:action="@{/piloto/save}" th:method="${nuevo}?'POST':'PUT'" th:object="${piloto}">
+                <div class="form-group" th:if="${piloto.pilotoId}">
+                    <label>Id</label>
+                    <input type="text" class="form-control" th:field="${piloto.pilotoId}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Número</label>
+                    <input type="text" class="form-control" th:field="${piloto.numero}">
+                </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" th:field="${piloto.nombre}">
+                </div>
+                <div class="form-group">
+                    <label>Equipo</label>
+                    <input type="text" class="form-control" th:field="${piloto.equipo}">
+                </div>
+                <div class="form-group">
+                    <label>Foto</label>
+                    <input type="text" class="form-control" th:field="${piloto.foto}">
+                </div>
+                <input class="btn btn-success" type="submit" />
+            </form>
+            <a th:href="@{/piloto}">Volver a la lista de pilotos</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer-->
+<footer th:replace="~{index :: footer}">
+</footer>
+<div th:replace="~{index :: librerias-js}"></div>
+
+</body>
+</html>

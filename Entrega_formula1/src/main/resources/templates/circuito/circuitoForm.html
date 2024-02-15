@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="Aplicación web de Fórmula 1"/>
+    <meta name="author" content="PSPR - IES Monte Naranco"/>
+    <title>Formula Naranco :: Circuito</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+
+<body>
+<!-- Responsive navbar-->
+<nav th:replace="~{index :: menu}">
+</nav>
+<!-- Page Content-->
+<section class="py-5">
+    <div class="container">
+        <h1 ></h1>
+
+        <form th:action="@{/circuito/save}" th:method="${nuevo}?'POST':'PUT'" th:object="${circuito}">
+            <table class="table table-striped">
+                <tr th:if="${circuito.circuitoId}">
+                    <td>Id </td>
+                    <td><input type="text" class="form-control" th:field="${circuito.circuitoId}" readonly></td>
+                </tr>
+
+                <tr>
+                    <td>Nombre </td>
+                    <td><input type="text" class="form-control" th:field="${circuito.nombre}"></td>
+                </tr>
+
+                <tr>
+                    <td>Pais </td>
+                    <td><input type="text" class="form-control" th:field="${circuito.pais}"></td>
+                </tr>
+
+                <tr>
+                    <td>Longitud </td>
+                    <td><input type="text" class="form-control" th:field="${circuito.longitud}"></td>
+                </tr>
+
+                <tr>
+                    <td>Vueltas </td>
+                    <td><input type="text" class="form-control" th:field="${circuito.numeroVueltas}"></td>
+                </tr>
+
+                <tr>
+                    <td>Curvas </td>
+                    <td><input type="text" class="form-control" th:field="${circuito.numeroCurvas}"></td>
+                </tr>
+
+                <tr>
+                    <td>Foto</td>
+                    <td><input type="text" class="form-control" th:field="${circuito.foto}"></td>
+                </tr>
+
+            </table>
+            <input class="btn btn-primary" type="submit" />
+        </form>
+    <a th:href="@{/circuito}">Volver a la lista de circuitos</a>
+    </div>
+</section>
+</body>
+
+</html>
