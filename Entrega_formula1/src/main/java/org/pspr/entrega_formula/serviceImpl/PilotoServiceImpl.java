@@ -26,6 +26,12 @@ public class PilotoServiceImpl implements PilotosService {
     }
 
     @Override
+    public List<Piloto> pilotosAleatorios(){
+        int n=(int)(Math.random()*21+1);
+        return pilotosRepo.pilotosAleatorios(n);
+    }
+
+    @Override
     public Piloto savePiloto(Piloto nuevoPiloto){
         if(nuevoPiloto!=null){
             return pilotosRepo.save(nuevoPiloto);

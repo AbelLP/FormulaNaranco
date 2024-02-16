@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface PilotosService {
     List<Piloto> findAllPilotos();
     Optional<Piloto> findPilotoById(Long id);
+    List<Piloto> pilotosAleatorios();
     Piloto savePiloto(Piloto nuevoPiloto);
     boolean deletePilto(Long id);
     Piloto updatePiloto(Piloto pilotoModificado);

@@ -19,6 +19,13 @@ public class PilotoController {
     @Autowired
     private PilotosService pilotosService;
 
+    @GetMapping("/")
+    public String getPilotosAleatorios(Model model){
+        List<Piloto> pilotos=pilotosService.pilotosAleatorios();
+        model.addAttribute("pilotos", pilotos);
+        return "index";
+    }
+
     @GetMapping("/piloto")
     public String getPilotos(Model model){
         List<Piloto> pilotos=pilotosService.findAllPilotos();
