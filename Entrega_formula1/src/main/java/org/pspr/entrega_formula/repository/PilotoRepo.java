@@ -15,5 +15,8 @@ public interface PilotoRepo extends JpaRepository<Piloto, Long> {
     @Query("SELECT p FROM Piloto p WHERE p.numero BETWEEN :n AND :n+2")
     List<Piloto> pilotosAleatorios(int n);
 
+    @Query("SELECT p FROM Piloto p WHERE p.equipo ='equipo'")
+    List<Piloto> findPilotoByEquipo(String equipo);
+
 
 }

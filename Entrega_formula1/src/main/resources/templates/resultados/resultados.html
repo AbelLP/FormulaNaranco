@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Formula Naranco :: Resultados</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav th:replace="~{index :: menu}">
+</nav>
+<!-- Page Content-->
+<div class="container px-4 px-lg-5">
+    <!-- Content Row-->
+    <div class="row gx-4 gx-lg-5">
+        <!-- Formularo de búsqueda -->
+        <form th:action="@{/resultados/buscar}" method="GET">
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <input type="text" class="form-control" name="cadena" >
+                </div>
+                <div id="search-button" class="form-group col-md-2">
+                    <input class="btn btn-success" type="submit" value="Buscar" />
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-hover table-bordered" th:if="${cadena}">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Piloto</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Circuito</th>
+                <th scope="col">Posición salida</th>
+                <th scope="col">Posición llegada</th>
+                <th scope="col">Posiciones ganadas</th>
+            </tr>
+            </thead>
+            <tbody  th:each="resultado:${cadena}" >
+            <tr>
+                <td th:text="${resultado.piloto.numero}"></td>
+                <td th:text="${resultado.piloto.nombre}"></td>
+                <td th:text="${resultado.piloto.equipo}"></td>
+                <td th:text="${resultado.circuitos.nombre}"></td>
+                <td th:text="${resultado.posicionSalida}"></td>
+                <td th:text="${resultado.posicionLlegada}"></td>
+                <td th:text="${resultado.posicionLlegada<=resultado.posicionSalida&&resultado.posicionLlegada!=0||resultado.posicionLlegada>resultado.posicionSalida}?${(resultado.posicionSalida)-(resultado.posicionLlegada)}:'Descalificado'" th:class=" ${(resultado.posicionSalida)-(resultado.posicionLlegada)<0||resultado.posicionLlegada==0}?'red':'green'" >Descalificado</td>
+                <!-- Modifica el th:class del td a green o red en función de las posiciones ganadas -->
+                <td >
+                    <span ></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table table-hover table-bordered" th:else="${cadena==null}">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Piloto</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Circuito</th>
+                <th scope="col">Posición salida</th>
+                <th scope="col">Posición llegada</th>
+                <th scope="col">Posiciones ganadas</th>
+            </tr>
+            </thead>
+            <tbody th:each="resultado:${resultados}" >
+            <tr>
+                <td th:text="${resultado.piloto.numero}"></td>
+                <td th:text="${resultado.piloto.nombre}"></td>
+                <td th:text="${resultado.piloto.equipo}"></td>
+                <td th:text="${resultado.circuitos.nombre}"></td>
+                <td th:text="${resultado.posicionSalida}"></td>
+                <td th:text="${resultado.posicionLlegada}"></td>
+                <td th:text="${resultado.posicionLlegada<=resultado.posicionSalida&&resultado.posicionLlegada!=0||resultado.posicionLlegada>resultado.posicionSalida}?${(resultado.posicionSalida)-(resultado.posicionLlegada)}:'Descalificado'" th:class=" ${(resultado.posicionSalida)-(resultado.posicionLlegada)<0||resultado.posicionLlegada==0}?'red':'green'" >Descalificado</td>
+                <!-- Modifica el th:class del td a green o red en función de las posiciones ganadas -->
+                <td >
+                    <span ></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Footer-->
+<footer th:replace="~{index :: footer}">
+</footer>
+<div th:replace="~{index :: librerias-js}"></div>
+
+</body>
+</html>

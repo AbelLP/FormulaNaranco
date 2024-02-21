@@ -32,6 +32,11 @@ public class PilotoServiceImpl implements PilotosService {
     }
 
     @Override
+    public List<Piloto> findPilotoByEquipo(String equipo){
+        return pilotosRepo.findPilotoByEquipo(equipo);
+    }
+
+    @Override
     public Piloto savePiloto(Piloto nuevoPiloto){
         if(nuevoPiloto!=null){
             return pilotosRepo.save(nuevoPiloto);
