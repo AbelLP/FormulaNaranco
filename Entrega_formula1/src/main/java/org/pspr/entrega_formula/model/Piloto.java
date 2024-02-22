@@ -9,7 +9,7 @@ import lombok.Setter;
 @Table(name="pilotos")
 @Getter @Setter
 @NoArgsConstructor
-public class Piloto {
+public class Piloto implements Comparable<Piloto>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,14 @@ public class Piloto {
     private String equipo;
     private String foto;
     private String nombre;
+
+    @Transient
+    private int puntos;
+
+    @Override
+    public int compareTo(Piloto o) {
+        return o.puntos-this.puntos;
+    }
 
 
 

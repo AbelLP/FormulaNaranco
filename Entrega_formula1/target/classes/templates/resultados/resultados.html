@@ -33,7 +33,7 @@
             </div>
         </form>
 
-        <table class="table table-hover table-bordered" th:if="${cadena}">
+        <table class="table table-hover table-bordered" th:if="${cadena!=null}">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -45,7 +45,7 @@
                 <th scope="col">Posiciones ganadas</th>
             </tr>
             </thead>
-            <tbody  th:each="resultado:${cadena}" >
+            <tbody th:each="resultado:${resultados}">
             <tr>
                 <td th:text="${resultado.piloto.numero}"></td>
                 <td th:text="${resultado.piloto.nombre}"></td>
@@ -61,7 +61,7 @@
             </tr>
             </tbody>
         </table>
-        <table class="table table-hover table-bordered" th:else="${cadena==null}">
+        <table class="table table-hover table-bordered" th:if="${cadena==null}">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>

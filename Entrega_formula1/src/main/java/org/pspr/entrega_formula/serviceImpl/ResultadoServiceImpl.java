@@ -15,19 +15,19 @@ public class ResultadoServiceImpl implements ResultadoService {
     @Autowired
     private ResultadoRepo resultadoRepo;
 
-
     @Override
     public List<Resultado> findAllResultados() {
         return resultadoRepo.findAll();
     }
 
     @Override
-    public Optional<Resultado> findResultadoByPilotoId(Long id) {
-        return resultadoRepo.findResultadoByPilotoId(id);
+    public List<Resultado> findResultadoByCadena(String cadena){
+        return resultadoRepo.findResultadoByCadena("%"+cadena+"%");
     }
 
     @Override
-    public Optional<Resultado> findResultadoByCircuitoId(Long id) {
-        return resultadoRepo.findResultadoByCircuitos(id);
+    public List<Resultado> findResultadoByNombre(String nombre){
+        return resultadoRepo.findResultadoByNombre(nombre);
     }
+
 }

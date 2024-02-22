@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class PilotoController {
+public class PilotoController /*implements Comparator<Piloto>*/ {
 
     @Autowired
     private PilotosService pilotosService;
@@ -75,6 +76,26 @@ public class PilotoController {
         pilotosService.deletePilto(id);
         return "redirect:/piloto";
     }
+
+    public int obtenerPuntos(int posicion){
+        int puntos=0;
+        switch (posicion){
+            case 1->puntos=25;
+            case 2->puntos=18;
+            case 3->puntos=15;
+            case 4->puntos=12;
+            case 5->puntos=10;
+            case 6->puntos=8;
+            case 7->puntos=6;
+            case 8->puntos=4;
+            case 9->puntos=2;
+            case 10->puntos=1;
+        }
+        return puntos;
+    }
+
+
+
 
 
 }

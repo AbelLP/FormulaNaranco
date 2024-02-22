@@ -13,10 +13,11 @@ public interface ResultadoRepo extends JpaRepository<Resultado, ResultadoId> {
     @Query("SELECT r FROM Resultado r ORDER BY r.circuitos.nombre, r.posicionLlegada")
     List<Resultado> findAll();
 
-    @Query("SELECT r FROM Resultado r WHERE r.piloto.pilotoId=?1 " )
-    Optional<Resultado> findResultadoByPilotoId(Long id);
+    @Query("SELECT r FROM Resultado r WHERE r.piloto.nombre LIKE ?1 OR r.piloto.equipo LIKE ?1 OR r.circuitos.nombre LIKE ?1")
+    List<Resultado> findResultadoByCadena(String cadena);
 
-    @Query("SELECT r FROM Resultado r WHERE r.circuitos.circuitoId=?1")
-    Optional<Resultado> findResultadoByCircuitos(Long id);
+    @Query("SELECT r FROM Resultado r WHERE r.piloto.nombre =?1")
+    List<Resultado> findResultadoByNombre(String nombre);
+
 
 }

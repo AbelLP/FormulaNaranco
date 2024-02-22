@@ -1,5 +1,6 @@
 package org.pspr.entrega_formula.serviceImpl;
 
+import org.pspr.entrega_formula.dto.PilotoDTO;
 import org.pspr.entrega_formula.model.Piloto;
 import org.pspr.entrega_formula.repository.PilotoRepo;
 import org.pspr.entrega_formula.service.PilotosService;
@@ -26,6 +27,11 @@ public class PilotoServiceImpl implements PilotosService {
     }
 
     @Override
+    public Piloto findPilotoById2(Long id){
+        return pilotosRepo.findPilotoById2(id);
+    }
+
+    @Override
     public List<Piloto> pilotosAleatorios(){
         int n=(int)(Math.random()*21+1);
         return pilotosRepo.pilotosAleatorios(n);
@@ -34,6 +40,11 @@ public class PilotoServiceImpl implements PilotosService {
     @Override
     public List<Piloto> findPilotoByEquipo(String equipo){
         return pilotosRepo.findPilotoByEquipo(equipo);
+    }
+
+    @Override
+    public PilotoDTO findPilotoByVictorias(){
+        return pilotosRepo.findPilotoByVictorias();
     }
 
     @Override

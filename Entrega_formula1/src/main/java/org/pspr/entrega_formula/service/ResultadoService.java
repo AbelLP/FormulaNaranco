@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface ResultadoService {
     List<Resultado> findAllResultados();
-    Optional<Resultado> findResultadoByPilotoId(Long id);
-    Optional<Resultado> findResultadoByCircuitoId(Long id);
+
+    List<Resultado> findResultadoByCadena(String cadena);
+
+    List<Resultado> findResultadoByNombre(String nombre);
 }
